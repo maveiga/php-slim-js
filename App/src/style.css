@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+}
+
+
+.cadastro {
+    width: 90%;
+    background-color: #cf5555;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.cadastro label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.cadastro input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.cadastro button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cadastro button:hover {
+    background-color: #0056b3;
+}
+
+.tabela {
+    width: 50%;
+    background-color: #f9f9f9;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    background-color: #eee;
+    text-align: center;
+    padding: 15px;
+    color: black;
+}
+
+.btneditar, .btnexcluir {
+    display: inline-block;
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.btneditar {
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+.btnexcluir {
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+#formularioCadastro {
+    display: none;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #eee;
+    text-align: center;
+    padding: 20px;
+    color: black;
+}
