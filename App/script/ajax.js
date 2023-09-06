@@ -130,12 +130,3 @@ function abrirModalEdicao(id) {
             console.error('Ocorreu um erro ao buscar os dados do cliente:', error);
         });
 }
-
-
-
-
-       
-
-
-
-
