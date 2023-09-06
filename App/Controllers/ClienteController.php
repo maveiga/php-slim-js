@@ -12,6 +12,14 @@ class ClienteController {
     public function __construct($container) {
         $this->view = $container->get('view');
     }
+
+    public function getHome(Request $request, Response $response, array $args):Response{
+        $clienteDao= new ClienteDAO();
+        $clientes=$clienteDao->getAllClientes();
+        return $this->view->render($response, 'login.html', ['clientes' => $clientes]);
+    }
+
+    
     public function getCliente(Request $request, Response $response, array $args):Response{
         $clienteDao= new ClienteDAO();
         $clientes=$clienteDao->getAllClientes();

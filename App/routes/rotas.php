@@ -19,6 +19,8 @@ $app->get('/editarporid/{id}', ClienteController::class .':paginaedicao');
 $app->post('/editar/{id}', ClienteController::class . ':editarCliente');
 $app->get('/clientes-json', ClienteController::class . ':getClientesJSON');
 
+$app->get('/home', ClienteController::class .':getHome');
+
 
 
 
