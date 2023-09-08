@@ -35,7 +35,7 @@ function sair() {
       }
   })
   .catch(error => {
-      console.error("Erro ao fazer login:", error);
+      console.error("Erro", error);
   });
 
 }
@@ -113,6 +113,17 @@ function deletarCliente(clienteId) {
 
 
 }
+function limparCampos() {
+    document.getElementById('nome').value = '';
+    document.getElementById('idade').value = '';
+    let botaoEditar = document.getElementById('editar');
+    botaoEditar.textContent = 'Cadastrar';
+    botaoEditar.onclick = function () {
+        cadastrarCliente();
+    }
+
+    
+}
 
 function atualizarTabela() {
     fetch("http://localhost/react/sitecompletoestilo/clientes-json")
@@ -172,4 +183,5 @@ function abrirModalEdicao(id) {
         .catch(error => {
             console.error('Ocorreu um erro ao buscar os dados do cliente:', error);
         });
+        
 }
