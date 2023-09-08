@@ -1,3 +1,46 @@
+function fazerlogin() {
+        var login = document.getElementById("login").value;
+        var senha = document.getElementById("senha").value;
+        var formData = new FormData();
+        formData.append("login", login);
+        formData.append("senha", senha);
+        console.log(login, senha)
+
+        fetch("http://localhost/react/sitecompletoestilo/fazerlogin", {
+            method: "POST",
+            body: formData
+        }).then(response => {
+          if (response.status === 200) {
+              // Login bem-sucedido, redirecione para a página de dashboard
+              window.location.href = "http://localhost/react/sitecompletoestilo/";
+          } else {
+              // Login falhou, mostre uma mensagem de erro ao usuário
+              alert("Login ou senha incorretos");
+          }
+      })
+      .catch(error => {
+          console.error("Erro ao fazer login:", error);
+      });
+       
+}
+
+function sair() {
+   
+    fetch("http://localhost/react/sitecompletoestilo/sair", {
+        method: "GET"
+    }).then(response => {
+      if (response.status === 200) {
+          // Login bem-sucedido, redirecione para a página de dashboard
+          window.location.href = "http://localhost/react/sitecompletoestilo/home";
+      }
+  })
+  .catch(error => {
+      console.error("Erro ao fazer login:", error);
+  });
+
+}
+
+
 
 function cadastrarCliente() {
     var nome = document.getElementById("nome").value;
@@ -6,7 +49,7 @@ function cadastrarCliente() {
     formData.append("nome", nome);
     formData.append("idade", idade);
 
-        fetch("http://localhost/react/sitecompletobootstrap/cadastros", {
+        fetch("http://localhost/react/sitecompletoestilo/cadastros", {
                 method: "POST",
                 body: formData
             })
@@ -29,7 +72,7 @@ function editarCliente(id) {
     formData.append("nome", nome);
     formData.append("idade", idade);
 
-        fetch(`http://localhost/react/sitecompletobootstrap/editar/${id}`, {
+        fetch(`http://localhost/react/sitecompletoestilo/editar/${id}`, {
                 method: "POST",
                 body: formData
             })
@@ -52,7 +95,7 @@ function editarCliente(id) {
 
 function deletarCliente(clienteId) {
     if (confirm('Deseja realmente excluir o cliente?')) {
-        fetch("http://localhost/react/sitecompletobootstrap/deletar/" + clienteId, {
+        fetch("http://localhost/react/sitecompletoestilo/deletar/" + clienteId, {
             method: "DELETE"
         })
         .then(response => {
@@ -72,7 +115,7 @@ function deletarCliente(clienteId) {
 }
 
 function atualizarTabela() {
-    fetch("http://localhost/react/sitecompletobootstrap/clientes-json")
+    fetch("http://localhost/react/sitecompletoestilo/clientes-json")
         .then(response => response.json())
         .then(data => {
             const tabela = document.querySelector('.tabela');
@@ -102,7 +145,7 @@ function atualizarTabela() {
 
 
 function abrirModalEdicao(id) {
-    fetch(`http://localhost/react/sitecompletobootstrap/editarporid/${id}`)
+    fetch(`http://localhost/react/sitecompletoestilo/editarporid/${id}`)
         .then(response => response.json())
         .then(data => {
             if (data.cliente) {

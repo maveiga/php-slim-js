@@ -1,7 +1,8 @@
 <?php
 use App\Controllers\ClienteController;
-$app = new \Slim\App();
+use App\Controllers\LoginController;
 
+$app = new \Slim\App();
 
 
 $container = $app->getContainer();
@@ -19,7 +20,10 @@ $app->get('/editarporid/{id}', ClienteController::class .':paginaedicao');
 $app->post('/editar/{id}', ClienteController::class . ':editarCliente');
 $app->get('/clientes-json', ClienteController::class . ':getClientesJSON');
 
-$app->get('/home', ClienteController::class .':getHome');
+$app->get('/home', LoginController::class .':getHome');
+$app->post('/fazerlogin', LoginController::class .':fazerLogin');
+
+$app->get('/sair', LoginController::class .':sair');
 
 
 

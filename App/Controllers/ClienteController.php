@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controllers;
-
 use Slim\Http\Response;
 use Slim\Http\Request;
 use App\DAO\ClienteDAO;
@@ -13,18 +12,20 @@ class ClienteController {
         $this->view = $container->get('view');
     }
 
-    public function getHome(Request $request, Response $response, array $args):Response{
-        $clienteDao= new ClienteDAO();
-        $clientes=$clienteDao->getAllClientes();
-        return $this->view->render($response, 'login.html', ['clientes' => $clientes]);
-    }
 
-    
     public function getCliente(Request $request, Response $response, array $args):Response{
-        $clienteDao= new ClienteDAO();
-        $clientes=$clienteDao->getAllClientes();
-        return $this->view->render($response, 'home.html', ['clientes' => $clientes]);
+        $clienteDao = new ClienteDAO();
+        $clientes = $clienteDao->getAllClientes();
+        
+        // Verifica se a variável de sessão 'logged_in' está definida e é verdadeira
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+            return $this->view->render($response, 'home.html', ['clientes' => $clientes]);
+        } else {
+            // Se 'logged_in' não estiver definida ou for falsa, redirecione para a página de login
+            return $this->view->render($response, 'login.html');
+        }
     }
+    
 
     public function getClientesJSON(Request $request, Response $response, array $args): Response {
         $clienteDAO = new ClienteDAO();

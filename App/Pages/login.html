@@ -1,3 +1,4 @@
+
 <html lang="pt-br"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,16 +19,18 @@
     <form class="form-signin">
       <img class="mb-4" src="https://getbootstrap.com.br/docs/4.1/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Seu email" required="" autofocus="">
-      <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+      <input type="email" id="login" class="form-control" placeholder="Seu email" required="" autofocus="">
+      <input type="password" id="senha" class="form-control" placeholder="Senha" required="">
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Lembrar de mim
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      <button type="button" class="btn btn-primary"id="log" onclick="fazerlogin()">Login</button>
+
       <p class="mt-5 mb-3 text-muted">© 2023</p>
     </form>
   
-
-</body></html>
+    <?php
+    require 'App\Pages\rodape.html'
+    ?>
