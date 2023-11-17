@@ -119,6 +119,8 @@ class ClienteController {
     
         return $response->withJson($responseData, 200);
     }
+    
+
     }
     
 

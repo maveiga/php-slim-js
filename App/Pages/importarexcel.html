@@ -1,0 +1,77 @@
+<?php
+require 'App\Pages\cabecalho.html';
+?>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Importar e Exibir Dados do Excel</title>
+</head>
+
+<body>
+    <h1>Importar Excel</h1>
+
+    <!-- Formulário de upload de Excel -->
+    <form action="http://localhost/importacaoDev/php-slim-js/importar-excel" method="post" enctype="multipart/form-data">
+        <label for="excelFile">Selecione o arquivo Excel:</label>
+        <input type="file" name="excelFile" accept=".xlsx" required>
+        <button type="submit">Importar</button>
+    </form>
+
+    <?php if (isset($excelData) && is_array($excelData) && !empty($excelData)): ?>
+        <!-- Tabela para exibir os dados do Excel -->
+        <table id="tabelaExcel">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($excelData as $data): ?>
+                    <tr>
+                        <td><?= $data['nome'] ?></td>
+                        <td>
+                            <input type="text" name="enderecoEditavel" value="<?= $data['endereco'] ?>">
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <!-- Botão para enviar todos os dados para o banco -->
+        <button onclick="enviarTudoParaBanco()">Enviar Todos para o Banco</button>
+    <?php else: ?>
+        <p>Nenhum dado do Excel disponível.</p>
+    <?php endif; ?>
+    
+    <script>
+        function enviarTudoParaBanco() {
+            // Obter todas as linhas da tabela
+            var linhas = document.querySelectorAll('#tabelaExcel tbody tr');
+
+            // Array para armazenar os dados
+            var dadosParaBanco = [];
+
+            // Iterar sobre as linhas da tabela
+            linhas.forEach(function (linha) {
+                var nome = linha.querySelector('td:first-child').innerText;
+                var endereco = linha.querySelector('input[name=enderecoEditavel]').value;
+
+                dadosParaBanco.push({
+                    nome: nome,
+                    endereco: endereco
+                });
+            });
+
+            // Aqui você pode adicionar a lógica para enviar os dados para uma rota e salvá-los no banco de dados usando Ajax
+            console.log('Enviando para o banco:', dadosParaBanco);
+        }
+    </script>
+    
+</body>
+
+<?php
+require 'App\Pages\cadastro.html';
+require 'App\Pages\rodape.html';
+?>

@@ -1,5 +1,6 @@
 <?php
 use App\Controllers\ClienteController;
+use App\Controllers\ExcelController;
 use App\Controllers\LoginController;
 
 $app = new \Slim\App();
@@ -26,6 +27,7 @@ $app->post('/fazerlogin', LoginController::class .':fazerLogin');
 $app->get('/sair', LoginController::class .':sair');
 
 
-
+$app->get('/importar-excel', ExcelController::class . ':renderImportarExcel');
+$app->post('/importar-excel', ExcelController::class . ':importarExcel');
 
 $app->run();
